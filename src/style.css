@@ -116,3 +116,8 @@ html{scroll-padding-top:110px}
 .hero-intro p{font-size:22px;line-height:1.8;margin:0}.hero-intro p span{font-size:18px}
 @media(max-width:1100px){.hero-intro{left:32px}}
 @media(max-width:700px){.hero-intro{left:24px;right:24px;bottom:110px;gap:24px}.hero-intro p{font-size:20px}.hero-intro p span{font-size:15px}}
+.hero-play-fallback{position:absolute;right:32px;bottom:95px;z-index:3;display:flex;align-items:center;gap:9px;padding:12px 18px;border:1px solid #ffffff55;border-radius:30px;background:#101111bb;font-size:14px}
+/* Avoid negative video compositing layers on mobile WebKit. */
+.hero-video{z-index:0}.hero-glass,.hero-shade{z-index:1}.hero-intro{position:absolute}.hero-bottom{z-index:2}
+.hero-content{position:static}.hero-content>.eyebrow,.hero-content>h1{position:relative;z-index:2}.hero-intro{z-index:2}
+@media(max-width:700px){.hero-glass{backdrop-filter:none;-webkit-backdrop-filter:none}.hero-play-fallback{bottom:68px;right:24px}}
