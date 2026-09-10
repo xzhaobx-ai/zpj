@@ -1,3 +1,4 @@
+import { isPhoneDevice } from './heroDevice';
 import usePortfolioMotion from './usePortfolioMotion';
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -36,8 +37,7 @@ function App(){
   return ()=>{window.removeEventListener('scroll',updateNavigation);window.removeEventListener('resize',updateNavigation)};
  },[]);
  const [selected,setSelected]=useState(null),[copied,setCopied]=useState(''),[playing,setPlaying]=useState(false);const video=useRef(null);
- const [mobileHero,setMobileHero]=useState(()=>matchMedia('(max-width: 767px), (max-height: 500px) and (pointer: coarse)').matches);
- useEffect(()=>{const m=matchMedia('(max-width: 767px), (max-height: 500px) and (pointer: coarse)');const update=()=>setMobileHero(m.matches);m.addEventListener('change',update);return()=>m.removeEventListener('change',update)},[]);
+ const [mobileHero]=useState(()=>isPhoneDevice());
  useEffect(()=>{const el=video.current;if(!el)return;el.muted=true;el.defaultMuted=true;el.playsInline=true;const m=matchMedia('(prefers-reduced-motion: reduce)');if(m.matches){el.pause();return;}setPlaying(false);el.play().catch(()=>setPlaying(false));},[mobileHero]);
  async function copy(value,key){try{await navigator.clipboard.writeText(value);setCopied(key);setTimeout(()=>setCopied(''),2400)}catch{setCopied('failed')}}
  function toggleVideo(){if(!video.current)return;if(video.current.paused){video.current.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false))}else{video.current.pause();setPlaying(false)}}
