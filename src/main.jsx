@@ -36,7 +36,9 @@ function App(){
   return ()=>{window.removeEventListener('scroll',updateNavigation);window.removeEventListener('resize',updateNavigation)};
  },[]);
  const [selected,setSelected]=useState(null),[copied,setCopied]=useState(''),[playing,setPlaying]=useState(false);const video=useRef(null);
- useEffect(()=>{const el=video.current;if(!el)return;el.muted=true;el.defaultMuted=true;el.playsInline=true;const m=matchMedia('(prefers-reduced-motion: reduce)');if(m.matches){el.pause();return;}el.play().catch(()=>setPlaying(false));},[]);
+ const [mobileHero,setMobileHero]=useState(()=>matchMedia('(max-width: 700px)').matches);
+ useEffect(()=>{const m=matchMedia('(max-width: 700px)');const update=()=>setMobileHero(m.matches);m.addEventListener('change',update);return()=>m.removeEventListener('change',update)},[]);
+ useEffect(()=>{const el=video.current;if(!el)return;el.muted=true;el.defaultMuted=true;el.playsInline=true;const m=matchMedia('(prefers-reduced-motion: reduce)');if(m.matches){el.pause();return;}setPlaying(false);el.play().catch(()=>setPlaying(false));},[mobileHero]);
  async function copy(value,key){try{await navigator.clipboard.writeText(value);setCopied(key);setTimeout(()=>setCopied(''),2400)}catch{setCopied('failed')}}
  function toggleVideo(){if(!video.current)return;if(video.current.paused){video.current.play().then(()=>setPlaying(true)).catch(()=>setPlaying(false))}else{video.current.pause();setPlaying(false)}}
  return <>
@@ -45,7 +47,7 @@ function App(){
  <div className="page-grainient" aria-hidden="true"><Grainient color1="#88B55A" color2="#090F0A" color3="#3A745D" timeSpeed={0.25} grainAmount={0.1} grainScale={0.6} grainAnimated contrast={1.5} saturation={0.65} zoom={0.9}/></div>
  <main>
  <section ref={hero} id="home" className="hero"><div className="opening-curtain" aria-hidden="true"/>
-  <video key="user-background-v2" ref={video} className="hero-video" muted playsInline loop preload="metadata" poster="/assets/hero-current-poster.jpg" onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}><source src="/assets/hero-mobile-compatible.mp4" type="video/mp4"/></video><div className="hero-glass" aria-hidden="true"/><div className="hero-shade"/>
+  <video key={mobileHero?"portrait-video":"landscape-video"} ref={video} className="hero-video" muted playsInline loop preload="metadata" poster={mobileHero?"/assets/hero-portrait-poster.jpg":"/assets/hero-current-poster.jpg"} onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}><source src={mobileHero?"/assets/hero-portrait.mp4":"/assets/hero-mobile-compatible.mp4"} type="video/mp4"/></video><div className="hero-glass" aria-hidden="true"/><div className="hero-shade"/>
   <div className="hero-content wrap"><p className="eyebrow"><span className="status-dot"/> XUELIAN ZHAO — DESIGN PORTFOLIO</p><h1><span className="hero-title-line"><span>感知真实。</span></span><span className="hero-title-line"><span>设计<span className="outline">下一种</span>可能<span className="green">。</span></span></span></h1><div className="hero-intro"><p>你好，我是赵雪莲。<br/><span>产品设计师 / AI 设计师 / UI 设计师</span></p><a className="round-link" href="#work" aria-label="探索精选作品"><ArrowDown size={27}/></a></div></div>
   {!playing&&<button className="hero-play-fallback" onClick={toggleVideo}><Play size={16}/>播放背景视频</button>}<div className="hero-bottom wrap"><span>以人的需求为起点，让想法成为体验。</span><div><button className="video-control" onClick={toggleVideo} aria-label={playing?'暂停背景视频':'播放背景视频'}>{playing?<Pause size={13}/>:<Play size={13}/>} MOTION {playing?'ON':'OFF'}</button><span className="small-index">SCROLL TO EXPLORE ↓</span></div></div>
  </section>

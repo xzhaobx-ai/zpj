@@ -19,7 +19,7 @@ export default function usePortfolioMotion(){
     document.querySelectorAll('.hero-title-line>span').forEach((el,i)=>play(el,[{transform:'translateY(115%) scaleY(.65) rotate(3deg)'},{transform:'translateY(0) scaleY(1) rotate(0)'}],500+i*200,1850));
     const curtain=document.querySelector('.opening-curtain');
     if(curtain)play(curtain,[{clipPath:'inset(0 0 0 0)'},{clipPath:'inset(0 0 100% 0)'}],0,1500);
-    const video=document.querySelector('.hero-video');if(video)play(video,[{transform:'scale(1.12)'},{transform:'scale(1)'}],0,2400);
+
     document.querySelectorAll('.hero-content>.eyebrow,.hero-intro,.hero-bottom').forEach((el,i)=>play(el,[{clipPath:'inset(100% 0 0 0)',transform:'translateY(35px)'},{clipPath:'inset(0 0 0 0)',transform:'translateY(0)'}],1100+i*180,1350));
    }
    if(typeof IntersectionObserver==='undefined')return;

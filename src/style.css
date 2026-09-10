@@ -121,3 +121,6 @@ html{scroll-padding-top:110px}
 .hero-video{z-index:0}.hero-glass,.hero-shade{z-index:1}.hero-intro{position:absolute}.hero-bottom{z-index:2}
 .hero-content{position:static}.hero-content>.eyebrow,.hero-content>h1{position:relative;z-index:2}.hero-intro{z-index:2}
 @media(max-width:700px){.hero-glass{backdrop-filter:none;-webkit-backdrop-filter:none}.hero-play-fallback{bottom:68px;right:24px}}
+/* Show every edge of either video; never crop at unusual viewport ratios. */
+.hero-video{object-fit:contain;object-position:center;background:#101111}
+@media(max-width:700px){.hero-content{padding-top:115px}.hero h1{font-size:clamp(30px,7vw,46px);letter-spacing:-1px;margin:18px 0}.hero-content>.eyebrow{font-size:10px;letter-spacing:1px}}
