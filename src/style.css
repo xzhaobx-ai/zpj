@@ -8,3 +8,111 @@
 
 .project-dialog[data-slot=dialog-content]{translate:none}
 
+
+/* Keep anchor headings clear of the floating navigation. */
+html{scroll-padding-top:110px}
+.nav.nav-floating{
+ position:fixed;top:16px;z-index:40;height:76px;padding:0 26px;
+ background:rgba(24,29,26,.76);
+ -webkit-backdrop-filter:blur(22px) saturate(135%);
+ backdrop-filter:blur(22px) saturate(135%);
+ border:1px solid rgba(223,239,226,.15);border-radius:16px;
+ box-shadow:0 12px 40px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.05);
+}
+@media(max-width:700px){
+ html{scroll-padding-top:92px}
+ .nav.nav-floating{top:10px;height:66px;padding:0 14px;border-radius:12px}
+}
+
+/* Fluted glass: stationary panes over the slowly changing light. */
+.hero-glass{position:absolute;inset:0;z-index:-2;pointer-events:none;
+ background:repeating-linear-gradient(90deg,rgba(3,10,3,.29) 0,rgba(5,12,4,.08) 79px,rgba(187,241,139,.065) 80px,rgba(3,10,3,.29) 81px);
+ -webkit-mask-image:linear-gradient(90deg,transparent 20%,#000 52%);
+ mask-image:linear-gradient(90deg,transparent 20%,#000 52%)}
+.hero-shade{background:linear-gradient(90deg,rgba(10,15,11,.65),transparent 76%),linear-gradient(0deg,#101111 1%,transparent 27%)}
+
+.work-categories{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 54px}
+.work-categories a{display:flex;align-items:center;gap:24px;border:1px solid #3b4339;padding:14px 22px;border-radius:30px;font-size:14px;transition:background .2s,border-color .2s}
+.work-categories a span{font-size:11px;color:var(--green)}
+.work-categories a:hover{background:#252f21;border-color:#819b6b}
+.work-group{margin-bottom:64px}
+.work-group:last-child{margin-bottom:0}
+.work-group-heading{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding:25px 0 30px}
+.work-group-heading h3{font-size:26px;font-weight:400;margin:0;display:flex;align-items:center;gap:16px}
+.work-group-heading h3 span{font-size:12px;color:var(--green)}
+.work-group-heading p{font-size:11px;letter-spacing:1.5px;color:var(--muted);margin:0}
+@media(max-width:700px){.work-categories{gap:8px;margin-bottom:35px}.work-categories a{padding:11px 14px;font-size:12px;gap:12px}.work-group-heading h3{font-size:22px}.work-group-heading p{font-size:9px;letter-spacing:.5px}.work-group{margin-bottom:44px}}
+
+/* Allow full project names to wrap without squeezing their numbering. */
+.project-caption>div{flex-wrap:wrap;align-items:baseline}
+.project-caption h3{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.5}
+.project-caption .project-id{flex-shrink:0}
+.project-caption .project-meta{flex-basis:100%;margin-left:32px}
+
+/* Portfolio closing page. */
+.contact-main .closing-kicker{font-size:14px;letter-spacing:3px;color:var(--muted);margin:0 0 22px}
+.closing-title{font-size:clamp(64px,11.5vw,195px);line-height:1.12;font-weight:500;letter-spacing:-.055em;margin:0;white-space:nowrap}
+.contact-main .closing-note{font-size:15px;line-height:1.9;color:#a3aea0;margin:30px 0 0;padding-bottom:40px;border-bottom:1px solid #4a5545}
+@media(max-width:700px){.closing-title{font-size:14vw}.contact-main .closing-kicker{font-size:12px;letter-spacing:2px}.contact-main .closing-note{font-size:13px;margin-top:22px;padding-bottom:28px}}
+
+/* Oversized, tightly set portfolio numbering. */
+.project-caption{--number-width:78px;--number-gap:18px}
+.project-caption>div{display:grid;grid-template-columns:var(--number-width) minmax(0,1fr);column-gap:var(--number-gap);row-gap:8px;align-items:center}
+.project-caption .project-id{grid-column:1;grid-row:1;font-family:'Arial Black','Arial',sans-serif;font-size:64px;font-weight:900;line-height:1;letter-spacing:-5px;font-variant-numeric:lining-nums tabular-nums;color:var(--green)}
+.project-caption h3{grid-column:2;grid-row:1}
+.project-caption .project-meta{grid-column:2;margin-left:0}
+.project-caption>p{margin-left:calc(var(--number-width) + var(--number-gap))}
+@media(max-width:700px){.project-caption{--number-width:64px;--number-gap:14px}.project-caption .project-id{font-size:54px;letter-spacing:-4px}}
+
+/* The detail toolbar stays within its own scrollable dialog. */
+.project-dialog[data-slot=dialog-content]{scroll-padding-top:92px}
+.project-dialog .dialog-head{
+ position:sticky;top:0;z-index:3;min-height:62px;padding:11px 15px;
+ background:rgba(24,29,26,.78);
+ -webkit-backdrop-filter:blur(22px) saturate(135%);
+ backdrop-filter:blur(22px) saturate(135%);
+ border:1px solid rgba(223,239,226,.16);border-radius:12px;
+ box-shadow:0 8px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.project-dialog .dialog-head .eyebrow{color:var(--green)}
+.project-dialog .dialog-close{flex-shrink:0;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);transition:background .2s,color .2s}
+.project-dialog .dialog-close:hover{background:var(--green);color:#101111}
+.project-dialog .dialog-close:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+@media(max-width:700px){.project-dialog .dialog-head{min-height:56px;padding:8px 11px;border-radius:10px}}
+
+.experience-row p{white-space:pre-line;line-height:2;font-size:14px}
+/* Full-color avatar with the complete six-tool stack. */
+.portrait-block>img{aspect-ratio:4/5;object-fit:contain;filter:none;background:#101111;border-radius:12px}
+@media(max-width:700px){.portrait-block{width:100%;max-width:420px}}
+
+/* One restrained animated background beneath the portfolio content. */
+#root{position:relative;isolation:isolate}
+.page-grainient{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.3}
+.hero{background:#101111}
+.contact{background:linear-gradient(180deg,rgba(16,17,17,.25),rgba(16,22,17,.6))}
+
+/* BorderGlow owns card surfaces; content remains fully interactive. */
+.project-glow,.skill-glow{min-width:0}
+.project-glow>.border-glow-inner,.skill-glow>.border-glow-inner{overflow:visible;border-radius:inherit;height:100%}
+.project-glow .project{display:block;width:100%;height:100%;padding:12px;border-radius:inherit}
+.project-glow .project-image{border-radius:10px}
+.project-glow .project-caption{padding:20px 8px 14px}
+.project-glow:focus-within{outline:2px solid var(--green);outline-offset:5px}
+.skill-glow .skill{height:100%;background:transparent;border:0;border-radius:inherit;transform:none}
+.skill-glow .skill:hover{transform:none}
+.border-glow-card::before,.border-glow-card::after{pointer-events:none}
+@media(max-width:700px){.project-glow .project{padding:8px}.project-glow .project-caption{padding:16px 6px 12px}}
+.closing-layout{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.7fr);gap:7%;align-items:center;margin:36px 0}.closing-photo{max-width:290px}.closing-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:16px}.closing-message .closing-title{font-size:clamp(46px,7.5vw,128px);letter-spacing:-.055em}.closing-period{display:inline-block;width:.16em;height:.16em;border:.035em solid var(--green);border-radius:50%;margin-left:.07em;vertical-align:baseline}.closing-message .closing-note{border:0;padding:0;margin:18px 0 24px}.closing-wechat{display:flex;align-items:center;gap:22px}.closing-wechat>img{width:120px;height:120px;object-fit:contain;background:#fff;padding:7px;border-radius:8px}.closing-wechat p{font-size:14px;margin:12px 0 7px}.closing-wechat>div>span:last-child{font-size:12px;color:var(--muted)}.contact-main>.contact-methods{border-top:1px solid #4a5545;padding-top:28px;margin-top:28px}.contact{height:auto;min-height:100svh;max-height:none}.contact-inner{min-height:100svh}.contact-main{padding:24px 0}
+@media(max-width:700px){.closing-layout{grid-template-columns:1fr;gap:28px}.closing-photo{width:150px}.closing-message .closing-title{font-size:12vw}.closing-wechat>img{width:110px;height:110px}.closing-layout{margin:20px 0}.contact-main{padding:30px 0}}
+.closing-layout{align-items:stretch}.closing-photo{position:relative;max-width:none;min-height:0}.closing-photo img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 44%}
+@media(max-width:700px){.closing-photo{width:100%;max-width:260px;height:340px}}
+/* Subtle dark grain over the supplied hero video. */
+.hero{background-color:#101111}.hero-video{filter:brightness(.72) saturate(.82)}
+.hero-glass{-webkit-mask-image:none;mask-image:none;background:rgba(5,8,7,.19);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(1px)}
+.hero-glass:after{content:'';position:absolute;inset:0;opacity:.075;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23fff' filter='url(%23n)' opacity='.8' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+.hero-shade{pointer-events:none;background:linear-gradient(90deg,rgba(8,12,10,.55),rgba(8,12,10,.08) 85%),linear-gradient(0deg,#101111 0%,rgba(16,17,17,.8) 7%,transparent 32%)}
+/* Keep the introduction below the lettering in the background video. */
+.hero-intro{position:absolute;left:max(56px,calc((100% - 1700px)/2));bottom:88px;gap:44px}
+.hero-intro p{font-size:22px;line-height:1.8;margin:0}.hero-intro p span{font-size:18px}
+@media(max-width:1100px){.hero-intro{left:32px}}
+@media(max-width:700px){.hero-intro{left:24px;right:24px;bottom:110px;gap:24px}.hero-intro p{font-size:20px}.hero-intro p span{font-size:15px}}

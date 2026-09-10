@@ -1,0 +1,2 @@
+.hero-title-line{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}.hero-title-line>span{display:block;transform-origin:0 100%}.opening-curtain{position:absolute;inset:0;z-index:4;background:#101411;pointer-events:none;clip-path:inset(0 0 100% 0)}
+@media(prefers-reduced-motion:reduce){.motion-pending{clip-path:none}.opening-curtain{display:none}}

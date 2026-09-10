@@ -39,3 +39,8 @@ next-env.d.ts
 
 /tmp/
 
+# Local previews, chart data, and downloaded installers
+/build/
+/.chart-data-*/
+/output/downloads/
+
