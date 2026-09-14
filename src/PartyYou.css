@@ -23,3 +23,5 @@
 .party-phone-display>.party-island{top:1.35%;left:50%;transform:translateX(-50%);width:28%;height:3.3%;border-radius:999px}
 .party-cover-phones>.party-iphone{padding:1px}.party-cover-phones .party-phone-display{border-width:1.5px}
 @supports(width:1cqi){.party-phone-display{border-width:1.15cqi}.party-cover-phones .party-phone-display{border-width:1.15cqi}.party-iphone{padding:1px}}
+
+.project-image>.party-updated-cover{object-fit:contain;background:#eeeaff}.party-updated-pages{margin-top:24px;display:grid;gap:14px}.party-updated-pages>a{display:block;border-radius:4px;overflow:hidden}.party-updated-pages img{display:block;width:100%;height:auto}.party-updated-pages>a:focus-visible{outline:2px solid var(--green);outline-offset:4px}
