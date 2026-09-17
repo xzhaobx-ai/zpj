@@ -150,3 +150,7 @@ Python：`C:/Users/zhaoshier/.cache/codex-runtimes/codex-primary-runtime/depende
 ## 2026-09-14 更新：PartyYou 内容替换
 
 用户提供桌面 `Partyyou` 文件夹的 P1.jpg–P13.jpg。已将 06 PartyYou 卡片封面替换为 P1，详情按数字顺序完整展示 13 页，支持点击原图。新素材目录 `public/assets/partyyou-20260914/`；`src/PartyYou.jsx` 已改为页面图片展示，旧版样机拼版和登录视频不再渲染，旧资产保留。分类、编号、总数和头图视频配置未变。需重新部署新构建；此前本文描述的 PartyYou 旧排版由此更新取代。
+
+
+## 2026-09-17 更新：PartyYou P7
+第7张详情图替换为用户 Downloads/作品集个人 (6)/P7.jpg。实际引用 `public/assets/partyyou-20260914/page-07-20260917.jpg`，使用新文件名避免缓存；其他12页未变。
